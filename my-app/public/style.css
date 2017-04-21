@@ -1,5 +1,17 @@
 .centered {
   text-align: center;
   width: 100%;
-  
+
+}
+
+.cloud
+{
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.space
+{
+  margin-top: 20px;
 }
