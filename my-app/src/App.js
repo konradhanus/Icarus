@@ -7,7 +7,7 @@ class Konrad extends Component{
 	
 	render(){
 		return(
-			<div>Konrad Hanus</div>
+			<div>Konrad Hanus is Awesome</div>
 		);
 	}
 }
