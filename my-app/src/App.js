@@ -3,6 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 
+class Konrad extends Component{
+	
+	render(){
+		return(
+			<div>Konrad Hanus is Awesome</div>
+		);
+	}
+}
+
 class Adam extends Component {
 	
 	render(){
@@ -23,6 +32,7 @@ class App extends Component {
 		
 		<Adam> </Adam>
 		
+		<Konrad />
       </div>
     );
   }
