@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Icarus from './Icarus';
 
 ReactDOM.render(
-    <App/>, document.getElementById('root'));
+    <Icarus/>, document.getElementById('root'));
