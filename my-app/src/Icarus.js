@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import UserList from './components/right/UserList.jsx'
 import Tabs from './components/left/Tabs.jsx'
 class Icarus extends Component {
+   
     render() {
+
+         
+
         return (
             <div className="Icarus">
                 <div className="container">
@@ -64,8 +68,9 @@ class Icarus extends Component {
 
                             </div>
                             <div className="col-md-3">
-                                <UserList></UserList>
-
+                                <div className="list-group">
+                                    {this.props.storage.map((user, id) => <UserList user={user}></UserList>)}
+                                </div>
                             </div>
                         </div>
                     </div>

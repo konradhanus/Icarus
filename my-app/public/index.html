@@ -11,8 +11,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="style.css" />
     <title>React App</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+            var state  ='';
+
+        $.ajax({
+            url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser",
+            cache: false,
+            success: function(data){
+            state = data;
+            }
+        });
+        
+        var JSONstate = JSON.parse(state);
+        console.log(JSONstate);
+        
+    </script>
 </head>
 <body>
+
     <div id="root"></div>
 
   
