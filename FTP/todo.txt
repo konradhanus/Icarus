@@ -1,0 +1,12 @@
+webservice.php?method=
+<?php 
+$nazwa_metody  = $_GET['method'];
+
+?>
+getUser
+    - zwraca w postaci json (na początku jako <pre></pre>)
+    liste wszystkich użytkowników z bazy danych
+
+getMessage&idUser=1
+    - zwraca w postac json (<pre></pre>)
+    listę wszystkich wiadomości tego użytkownika z bazy danych
