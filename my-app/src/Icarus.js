@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
 import UserList from './components/right/UserList.jsx'
 import Tabs from './components/left/Tabs.jsx'
+import $ from "jquery";
 class Icarus extends Component {
    
+
+   componentDidMount(){
+        $.ajax({
+            url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser",
+            dataType: "json",
+            success: function( response ) {
+                console.log( response ); // server response
+            }
+
+        });
+   }
     render() {
 
-         
-
+    
         return (
             <div className="Icarus">
                 <div className="container">
