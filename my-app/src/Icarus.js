@@ -4,20 +4,28 @@ import Tabs from './components/left/Tabs.jsx'
 import $ from "jquery";
 class Icarus extends Component {
    
+    constructor() {
+        super();
+        this.state = {webService: null};
+        
+    }
+
+
 
    componentDidMount(){
+       let Icarus = this;
         $.ajax({
             url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser",
             dataType: "json",
-            success: function( response ) {
-                console.log( response ); // server response
+            success: function( response ) {  
+                Icarus.setState({webService: response});   
             }
 
         });
    }
     render() {
 
-    
+    console.log(this.state.webService);
         return (
             <div className="Icarus">
                 <div className="container">
@@ -80,7 +88,10 @@ class Icarus extends Component {
                             </div>
                             <div className="col-md-3">
                                 <div className="list-group">
-                                    {this.props.storage.map((user, id) => <UserList user={user}></UserList>)}
+                                    {
+                                        this.state.webService !== null ?
+                                        this.state.webService.map((user, id) => <UserList user={user}></UserList>)
+                                        : "nie ma danych"}
                                 </div>
                             </div>
                         </div>
