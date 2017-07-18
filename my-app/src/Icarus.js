@@ -22,10 +22,10 @@ class Icarus extends Component {
             }
 
         });
-   }
+    }
     render() {
 
-    console.log(this.state.webService);
+    
         return (
             <div className="Icarus">
                 <div className="container">
@@ -35,8 +35,8 @@ class Icarus extends Component {
                                 <Tabs jakiesProperty="ala ma kota"></Tabs>
 
                                 {/* Zrób z tego kodu osobny komponent reciveMessage
-                                
-                                <ReciveMessage src="" name="" message="" />*/}            
+
+                                <ReciveMessage src="" name="" message="" />*/}
                                 <div className="media">
                                     <div className="media-left">
                                         <img
@@ -70,14 +70,12 @@ class Icarus extends Component {
                                     </div>
                                 </div>
 
-                                <div className="clearfix space"/>
+                                <div className="clearfix space"/> {/* Zrób z tego osobny komponent SendButton
+                                - tak możesz to używać w komponencie - {this.props.defalutValue}
 
-                                {/* Zrób z tego osobny komponent SendButton
-                                - tak możesz to używać w komponencie - {this.props.defalutValue} 
-                                
                                 <SendButton defaultValue="WYŚLIJ"  />
                                 */}
-                                
+
                                 <div className="input-group">
                                     <input type="text" className="form-control"/>
                                     <div className="input-group-btn">
