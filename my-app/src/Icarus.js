@@ -1,31 +1,44 @@
 import React, {Component} from 'react';
 import UserList from './components/right/UserList.jsx'
 import Tabs from './components/left/Tabs.jsx'
+import Messages from './components/left/Messages.jsx'
 import $ from "jquery";
 class Icarus extends Component {
-   
+
     constructor() {
         super();
-        this.state = {webService: null};
-        
+        this.state = {
+            usersList: "",
+            messageList: ""
+        };
+
     }
 
-
-
-   componentDidMount(){
-       let Icarus = this;
+    componentDidMount() {
+        let Icarus = this;
         $.ajax({
             url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser",
             dataType: "json",
-            success: function( response ) {  
-                Icarus.setState({webService: response});   
+            success: function (response) {
+                Icarus.setState({usersList: response});
+
+            }
+
+        });
+
+        $.ajax({
+            url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getMessage",
+            dataType: "json",
+            success: function (response) {
+                Icarus.setState({messageList: response});
+
             }
 
         });
     }
-    render() {
 
-    
+    render() {
+        console.log(this.state.messageList);
         return (
             <div className="Icarus">
                 <div className="container">
@@ -34,47 +47,18 @@ class Icarus extends Component {
                             <div className="col-md-9">
                                 <Tabs jakiesProperty="ala ma kota"></Tabs>
 
-                                {/* Zrób z tego kodu osobny komponent reciveMessage
+                                {this.state.messageList !== ""
+                                    ? this
+                                        .state
+                                        .messageList
+                                        .map((mojewiadomosci, id_tej_wadomosci) => <Messages
+                                            isSenderMe={true}
+                                            name={mojewiadomosci.id_guest}
+                                            value={mojewiadomosci.message}/>)
+                                    : null
+}
 
-                                <ReciveMessage src="" name="" message="" />*/}
-                                <div className="media">
-                                    <div className="media-left">
-                                        <img
-                                            src="https://api.adorable.io/avatars/80/konrad"
-                                            className="media-object"
-                                            style={{
-                                            width: 80
-                                        }}/>
-                                    </div>
-                                    <div className="media-body cloud">
-                                        <h4 className="media-heading">John Doe</h4>
-                                        <p>Lorem ipsum...</p>
-                                    </div>
-                                </div>
-
-                                {/* Zrób z tego kodu osobny komponent senderMessage
-                                <SenderMessage src="" name="" message="" />*/}
-                                <div className="media">
-                                    <div className="media-body cloud">
-                                        <h4 className="media-heading">John Doe</h4>
-                                        <p>Lorem ipsum dolor sitd do eiusmod tempor incididunt ut labore et dolore magna
-                                            aliqua.</p>
-                                    </div>
-                                    <div className="media-right">
-                                        <img
-                                            src="https://api.adorable.io/avatars/80/adam"
-                                            className="media-object"
-                                            style={{
-                                            width: 80
-                                        }}/>
-                                    </div>
-                                </div>
-
-                                <div className="clearfix space"/> {/* Zrób z tego osobny komponent SendButton
-                                - tak możesz to używać w komponencie - {this.props.defalutValue}
-
-                                <SendButton defaultValue="WYŚLIJ"  />
-                                */}
+                                <div className="clearfix space"/>
 
                                 <div className="input-group">
                                     <input type="text" className="form-control"/>
@@ -86,10 +70,13 @@ class Icarus extends Component {
                             </div>
                             <div className="col-md-3">
                                 <div className="list-group">
-                                    {
-                                        this.state.webService !== null ?
-                                        this.state.webService.map((user, id) => <UserList user={user}></UserList>)
-                                        : "nie ma danych"}
+                                    {this.state.usersList !== ""
+                                        ? this
+                                            .state
+                                            .usersList
+                                            .map((user, id) => <UserList user={user}></UserList>)
+                                        : null
+}
                                 </div>
                             </div>
                         </div>
