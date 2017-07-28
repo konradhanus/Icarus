@@ -51,7 +51,8 @@ class Icarus extends Component {
                                     ? this
                                         .state
                                         .messageList
-                                        .map((mojewiadomosci, id_tej_wadomosci) => <Messages
+                                        .map((mojewiadomosci, id_tej_wadomosci) => 
+                                        <Messages
                                             isSenderMe={true}
                                             name={mojewiadomosci.id_guest}
                                             value={mojewiadomosci.message}/>)
@@ -87,5 +88,19 @@ class Icarus extends Component {
         )
     }
 }
+
+/*
+
+pocztaj o 
+- map, Obiekt i Tablica
+- ajax POST, GET w jquery
+- object
+- array
+
+jak się tworzy obiekty w js
+jak się tworzy array js
+
+- string, int, null
+- */
 
 export default Icarus;
