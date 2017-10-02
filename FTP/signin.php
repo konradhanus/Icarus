@@ -5,8 +5,8 @@ session_start();
 header('Content-Type: application/json;  charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 require_once('sql.php');
- $userName = $_POST['userName'];
- $userPassword = md5($_POST['userPassword']);
+ $userName = $_GET['userName'];
+ $userPassword = md5($_GET['userPassword']);
  
 
 
@@ -27,9 +27,18 @@ require_once('sql.php');
                  
             
              } 
-			 
+                $is_logged_in = $return;
+
+                if(is_null($is_logged_in))
+                {
+                    $is_logged_in = 0;
+                }
+
+                $return2 = array('is_logged_in' => $is_logged_in);
+                echo json_encode($return2);
+			/* 
 			$_SESSION['is_logged_in'] = $return;
-			header("Location: http://arconsulting.nazwa.pl/icarus/sessiontest.php");
+			header("Location: http://arconsulting.nazwa.pl/icarus/sessiontest.php");*/
 //$_SESSION['id']=$return;
 
         }

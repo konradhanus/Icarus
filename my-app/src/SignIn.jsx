@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from "jquery";
+import Icarus from './Icarus';
 class SignIn extends Component {
 
     constructor() {
@@ -18,13 +19,14 @@ class SignIn extends Component {
   }
 
     checkedIfLoggedIn() {
+        
         let Icarus = this;
         $.ajax({
-            url: "http://arconsulting.nazwa.pl/icarus/checkifloggedin.php",
+            url: "http://arconsulting.nazwa.pl/icarus/signin.php?userName=konrad.hanus@gmail.com&userPassword=aa",
             dataType: "json",
             success: function (response) {
                 //  Icarus.setState({usersList: response});
-                alert(response);
+                console.log(response);
             }
 
         });
@@ -44,6 +46,8 @@ class SignIn extends Component {
     }
 
     render() {
+
+        this.checkedIfLoggedIn();
         return (
             <div className="container">
                 <form

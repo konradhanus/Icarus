@@ -2,6 +2,6 @@
 header('Content-Type: application/json;  charset=utf-8');
 session_start();
 
-echo $_SESSION['id'];
+echo json_encode($_SESSION['id']);
 
 ?>
