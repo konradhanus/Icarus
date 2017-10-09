@@ -6,23 +6,37 @@ class SignIn extends Component {
     constructor() {
         super();
         this.state = {
-            userLogin: "qqqq",
-            userPassword: ""
+            userLogin: "",
+            userPassword: "",
+            isLoggedIn: false
+            
         };
 
-    this.handleChange = this.handleChange.bind(this);
+        this.handleLoginChange = this
+            .handleLoginChange
+            .bind(this);
 
+        this.handlePasswordChange = this
+            .handlePasswordChange
+            .bind(this);
 
     }
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
 
+    handleLoginChange(event) {
+        console.log(event.target.value);
+        this.setState({userLogin: event.target.value});
+    }
+
+     handlePasswordChange(event) {
+        console.log(event.target.value);
+        this.setState({userPassword: event.target.value});
+     }
     checkedIfLoggedIn() {
-        
+
         let Icarus = this;
         $.ajax({
-            url: "http://arconsulting.nazwa.pl/icarus/signin.php?userName=konrad.hanus@gmail.com&userPassword=aa",
+            url: "http://arconsulting.nazwa.pl/icarus/signin.php?userName=konrad.hanus@gmail.com&u" +
+                    "serPassword=aa",
             dataType: "json",
             success: function (response) {
                 //  Icarus.setState({usersList: response});
@@ -34,20 +48,43 @@ class SignIn extends Component {
     }
 
     logIn() {
-        alert(this.state.userLogin);
+      
         let Icarus = this;
-        $.post("http://arconsulting.nazwa.pl/icarus/signin.php", {
+        /*$.post("http://arconsulting.nazwa.pl/icarus/signin.php", {
             userName: this.state.userLogin,
             userPassword: this.state.userPassword
         }, function (result) {
-            alert(result);
+            console.log(result);
+        });*/
+        var url = "http://arconsulting.nazwa.pl/icarus/signin.php?userName="+this.state.userLogin+"&"+
+                    "userPassword="+this.state.userPassword;
+        console.log(url);
+        $.ajax({
+            url: url,
+            dataType: "json",
+            success: function (response) {
+                //  Icarus.setState({usersList: response});
+                console.log(response);
+                if(response.is_logged_in)
+                {
+                      Icarus.setState({ isLoggedIn: true});
+                }
+            }
+
         });
 
     }
 
     render() {
 
-        this.checkedIfLoggedIn();
+        //this.checkedIfLoggedIn();
+
+        if (this.state.isLoggedIn)
+        {
+             return (<Icarus/>);
+        }else{
+
+        
         return (
             <div className="container">
                 <form
@@ -60,11 +97,12 @@ class SignIn extends Component {
                         name="userName"
                         type="email"
                         id="inputEmail"
+                        onChange={this.handleLoginChange}
                         className="form-control"
                         placeholder="Wpisz adres email"
                         required
-                        value={this.state.userLogin}
-                        onChange={this.handleChange}
+                       
+                      
                         autofocus/>
 
                     <label className="password-label" htmlFor="inputPassword">Hasło:</label>
@@ -73,19 +111,23 @@ class SignIn extends Component {
                         type="password"
                         id="inputPassword"
                         className="form-control"
-                        value={this.state.userPassword}
-                        onChange={this.handleChange}
+                        onChange={this.handlePasswordChange}
+                        
+                      
                         placeholder="Wpisz hasło"
                         required/>
 
                     <button
                         className="btn btn-lg btn-primary btn-block"
                         type="button"
-                        onClick={this.logIn.bind(this)}>Zaloguj</button>
+                        onClick={this
+                        .logIn
+                        .bind(this)}>Zaloguj</button>
                 </form>
             </div>
 
         )
+    }
     }
 }
 
