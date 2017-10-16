@@ -3,6 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Icarus from './Icarus';
 import SignIn from './SignIn.jsx';
-
+import UserProfile from './UserProfile';
 ReactDOM.render(
-    <SignIn/>, document.getElementById('root'));
+    <UserProfile/>, document.getElementById('root'));

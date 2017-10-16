@@ -3,6 +3,7 @@ import UserList from './components/right/UserList.jsx'
 import Tabs from './components/left/Tabs.jsx'
 import Messages from './components/left/Messages.jsx'
 import $ from "jquery";
+import FontAwesome from 'react-fontawesome';
 class Icarus extends Component {
 
     constructor() {
@@ -41,6 +42,28 @@ class Icarus extends Component {
         console.log(this.state.messageList);
         return (
             <div className="Icarus">
+
+<div>
+        <style dangerouslySetInnerHTML={{__html: "\n  /* Note: Try to remove the following lines to see the effect of CSS positioning */\n  .affix {\n      top: 0;\n      width: 100%;\n  }\n\n  .affix + .container-fluid {\n      padding-top: 70px;\n  }\n  " }} />
+
+        <nav className="navbar navbar-inverse" data-spy="affix" data-offset-top={197}>
+        <ul className="nav navbar-nav">
+          <li className="active"><a href="#">Icarus</a></li>
+
+        
+
+        </ul>
+      <ul className="nav navbar-nav navbar-right">
+          <li> <a href="#"><FontAwesome name='user-circle' size='2x'/></a></li>
+          </ul>
+
+      </nav>
+        <div className="container-fluid" style={{height: 10}}>
+        
+        </div>
+      </div>
+
+
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
