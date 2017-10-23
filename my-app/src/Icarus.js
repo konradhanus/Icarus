@@ -1,120 +1,83 @@
 import React, {Component} from 'react';
-import UserList from './components/right/UserList.jsx'
-import Tabs from './components/left/Tabs.jsx'
-import Messages from './components/left/Messages.jsx'
-import $ from "jquery";
 import FontAwesome from 'react-fontawesome';
+import UserProfile from './UserProfile';
+import Chat from './Chat';
+
 class Icarus extends Component {
 
     constructor() {
         super();
         this.state = {
-            usersList: "",
-            messageList: ""
+           
+            page: 'chat'
         };
 
     }
 
-    componentDidMount() {
-        let Icarus = this;
-        $.ajax({
-            url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser",
-            dataType: "json",
-            success: function (response) {
-                Icarus.setState({usersList: response});
+    userProfilClick() {
 
-            }
-
-        });
-
-        $.ajax({
-            url: "http://arconsulting.nazwa.pl/icarus/webservice.php?method=getMessage",
-            dataType: "json",
-            success: function (response) {
-                Icarus.setState({messageList: response});
-
-            }
-
-        });
+        this.setState({ page: 'userprofile'});
     }
+
+    chatClick() {
+
+        this.setState({ page: 'chat'});
+    }
+
+    
 
     render() {
         console.log(this.state.messageList);
-        return (
-            <div className="Icarus">
-
-<div>
-        <style dangerouslySetInnerHTML={{__html: "\n  /* Note: Try to remove the following lines to see the effect of CSS positioning */\n  .affix {\n      top: 0;\n      width: 100%;\n  }\n\n  .affix + .container-fluid {\n      padding-top: 70px;\n  }\n  " }} />
-
-        <nav className="navbar navbar-inverse" data-spy="affix" data-offset-top={197}>
-        <ul className="nav navbar-nav">
-          <li className="active"><a href="#">Icarus</a></li>
 
         
+            return (
+                <div className="Icarus">
 
-        </ul>
-      <ul className="nav navbar-nav navbar-right">
-          <li> <a href="#"><FontAwesome name='user-circle' size='2x'/></a></li>
-          </ul>
+                    <div>
+                        <style
+                            dangerouslySetInnerHTML={{
+                            __html: "\n /* Note: Try to remove the following lines to see the effect of CSS positioning */\n .affix {\n top: 0;\n width: 100%;\n }\n\n .affix + .container-fluid {\n padding-top: 70px;\n }\n "
+                        }}/>
 
-      </nav>
-        <div className="container-fluid" style={{height: 10}}>
-        
-        </div>
-      </div>
+                        <nav className="navbar navbar-inverse" data-spy="affix" data-offset-top={197}>
+                            <ul className="nav navbar-nav">
+                                <li className="active">
+                                    <a href="#">Icarus</a>
+                                </li>
 
+                            </ul>
+                            <ul className="nav navbar-nav navbar-right">
+                                
+                                <li>
+                                    <a href="#" onClick={this.chatClick.bind(this)}><FontAwesome name='comments-o' size='2x' /></a>
+                                </li>
 
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="col-md-9">
-                                <Tabs jakiesProperty="ala ma kota"></Tabs>
+                                <li>
+                                    <a href="#" onClick={this.userProfilClick.bind(this)}><FontAwesome name='user-circle' size='2x' /></a>
+                                </li>
+                                 
+                            </ul>
 
-                                {this.state.messageList !== ""
-                                    ? this
-                                        .state
-                                        .messageList
-                                        .map((mojewiadomosci, id_tej_wadomosci) => 
-                                        <Messages
-                                            isSenderMe={true}
-                                            name={mojewiadomosci.id_guest}
-                                            value={mojewiadomosci.message}/>)
-                                    : null
-}
-
-                                <div className="clearfix space"/>
-
-                                <div className="input-group">
-                                    <input type="text" className="form-control"/>
-                                    <div className="input-group-btn">
-                                        <input type="button" defaultValue="WYŚLIJ" className="btn btn-default"/>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="col-md-3">
-                                <div className="list-group">
-                                    {this.state.usersList !== ""
-                                        ? this
-                                            .state
-                                            .usersList
-                                            .map((user, id) => <UserList user={user}></UserList>)
-                                        : null
-}
-                                </div>
-                            </div>
-                        </div>
+                        </nav>
+                        <div
+                            className="container-fluid"
+                            style={{
+                            height: 10
+                        }}></div>
                     </div>
+                    {this.state.page === 'userprofile' ? <UserProfile /> : <Chat /> }
+                    
+                    
                 </div>
-            </div>
 
-        )
-    }
+            )
+        }
+
 }
 
 /*
 
-pocztaj o 
+pocztaj o
 - map, Obiekt i Tablica
 - ajax POST, GET w jquery
 - object
