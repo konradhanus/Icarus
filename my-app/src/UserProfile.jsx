@@ -2,6 +2,18 @@ import React, {Component} from 'react';
 import $ from "jquery";
 class UserProfile extends Component {
 
+   constructor() {
+        super();
+        this.state = {
+            name: "Adam",
+            surname: "Rusnak",
+            email: "adrusnak@gmail.com",
+            password: "aaa",
+            login: "adrusnak"
+        };
+
+    }
+
     render() {
 
         return (
@@ -15,7 +27,7 @@ class UserProfile extends Component {
           <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
             <div className="panel panel-info">
               <div className="panel-heading">
-                <h3 className="panel-title">IMIĘ I NAZWISKO Z BAZY</h3>
+                <h3 className="panel-title">{this.state.name} {this.state.surname}</h3>
               </div>
               <div className="panel-body">
                 <div className="row">
@@ -25,31 +37,33 @@ class UserProfile extends Component {
                   }
                   <div className=" col-md-9 col-lg-9 "> 
                     <table className="table table-user-information">
+                     
                       <tbody>
                         <tr>
                           <td>Imię:</td>
-                          <td>IMIĘ Z BAZY</td>
+                          <td><div class="form-group"><input type="text" class="form-group" name="name" value={this.state.name}/></div></td>
                         </tr>
                         <tr>
                           <td>Nazwisko:</td>
-                          <td>NAZWISKO Z BAZY</td>
+                          <td><div class="form-group"><input type="text" class="form-group" name="surname" value={this.state.surname}/></div></td>
                         </tr>
                         <tr>
                           <td>Adres email:</td>
-                          <td>EMAIL Z BAZY</td>
+                          <td><div class="form-group"><input type="text" class="form-group" name="email" value={this.state.email}/></div></td>
                         </tr>
                         <tr>
                         </tr><tr>
                           <td>Hasło:</td>
-                          <td>HASŁO Z BAZY</td>
+                          <td><div class="form-group"><input type="password" class="form-group" name="password" value={this.state.password}/></div></td>
                         </tr>
                         <tr>
                           <td>Login:</td>
-                          <td>LOGIN Z BAZY</td>
+                          <td><div class="form-group"><input type="text" class="form-group" name="login" value={this.state.login}/></div></td>
                         </tr>
                        
                         
                       </tbody>
+                    
                     </table>
                   
                    
