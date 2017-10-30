@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import FontAwesome from 'react-fontawesome';
+
 import UserProfile from './UserProfile';
 import Chat from './Chat';
+import NavigationBar from './NavigationBar';
 
 class Icarus extends Component {
 
@@ -34,31 +35,11 @@ class Icarus extends Component {
                 <div className="Icarus">
 
                     <div>
-                        <style
-                            dangerouslySetInnerHTML={{
-                            __html: "\n /* Note: Try to remove the following lines to see the effect of CSS positioning */\n .affix {\n top: 0;\n width: 100%;\n }\n\n .affix + .container-fluid {\n padding-top: 70px;\n }\n "
-                        }}/>
+                        
 
-                        <nav className="navbar navbar-inverse" data-spy="affix" data-offset-top={197}>
-                            <ul className="nav navbar-nav">
-                                <li className="active">
-                                    <a href="#">Icarus</a>
-                                </li>
+                        <NavigationBar userProfilClick={this.userProfilClick.bind(this)} chatClick={this.userProfilClick.bind(this)}></NavigationBar>
 
-                            </ul>
-                            <ul className="nav navbar-nav navbar-right">
-                                
-                                <li>
-                                    <a href="#" onClick={this.chatClick.bind(this)}><FontAwesome name='comments-o' size='2x' /></a>
-                                </li>
 
-                                <li>
-                                    <a href="#" onClick={this.userProfilClick.bind(this)}><FontAwesome name='user-circle' size='2x' /></a>
-                                </li>
-                                 
-                            </ul>
-
-                        </nav>
                         <div
                             className="container-fluid"
                             style={{
