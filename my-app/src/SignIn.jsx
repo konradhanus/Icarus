@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import $ from "jquery";
 import Icarus from './Icarus';
 import axios from 'axios';
+import RegistrationForm from './RegistrationForm';
 
 class SignIn extends Component {
 
@@ -10,7 +11,8 @@ class SignIn extends Component {
         this.state = {
             userLogin: "",
             userPassword: "",
-            isLoggedIn: false
+            isLoggedIn: false,
+            page: ""
 
         };
 
@@ -40,14 +42,20 @@ class SignIn extends Component {
 
         var url = "http://arconsulting.nazwa.pl/icarus/signin.php?userName=" + this.state.userLogin + "&userPassword=" + this.state.userPassword;
 
-        axios.get(url).then(function (response) {
+        axios
+            .get(url)
+            .then(function (response) {
 
                 if (response.data.is_logged_in) {
                     Icarus.setState({isLoggedIn: true});
                 }
 
-        });
-    } 
+            });
+    }
+
+    registration() {
+         this.setState({ page: 'registrationForm'});
+    }
 
     render() {
 
@@ -55,44 +63,58 @@ class SignIn extends Component {
             return (<Icarus/>);
         } else {
 
-            return (
-                <div className="container">
-                    <form
-                        className="form-signin"
-                        action="http://arconsulting.nazwa.pl/icarus/signin.php"
-                        method="POST">
+            if (this.state.page == 'registrationForm') {
 
-                        <label htmlFor="inputEmail">Login:</label>
-                        <input
-                            name="userName"
-                            type="email"
-                            id="inputEmail"
-                            onChange={this.handleLoginChange}
-                            className="form-control"
-                            placeholder="Wpisz adres email"
-                            required
-                            autofocus/>
+                   return (
+                       <RegistrationForm />
+                   )     
 
-                        <label className="password-label" htmlFor="inputPassword">Hasło:</label>
-                        <input
-                            name="userPassword"
-                            type="password"
-                            id="inputPassword"
-                            className="form-control"
-                            onChange={this.handlePasswordChange}
-                            placeholder="Wpisz hasło"
-                            required/>
+            } else {
+                return (
+                    <div className="container">
+                        <form
+                            className="form-signin"
+                            action="http://arconsulting.nazwa.pl/icarus/signin.php"
+                            method="POST">
 
-                        <button
-                            className="btn btn-lg btn-primary btn-block"
-                            type="button"
+                            <label htmlFor="inputEmail">Login:</label>
+                            <input
+                                name="userName"
+                                type="email"
+                                id="inputEmail"
+                                onChange={this.handleLoginChange}
+                                className="form-control"
+                                placeholder="Wpisz adres email"
+                                required
+                                autofocus/>
+
+                            <label className="password-label" htmlFor="inputPassword">Hasło:</label>
+                            <input
+                                name="userPassword"
+                                type="password"
+                                id="inputPassword"
+                                className="form-control"
+                                onChange={this.handlePasswordChange}
+                                placeholder="Wpisz hasło"
+                                required/>
+
+                            <button
+                                className="btn btn-lg btn-primary btn-block"
+                                type="button"
+                                onClick={this
+                                .logIn
+                                .bind(this)}>Zaloguj</button>
+
+                        </form>
+                       <div className="centered"> <a
+                            href="#"
                             onClick={this
-                            .logIn
-                            .bind(this)}>Zaloguj</button>
-                    </form>
-                </div>
+                            .registration
+                            .bind(this)}>Zarejestruj się</a></div>
+                    </div>
 
-            )
+                )
+            }
         }
     }
 }
