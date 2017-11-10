@@ -4,5 +4,8 @@ import ReactDOM from 'react-dom';
 import Icarus from './Icarus';
 import SignIn from './SignIn.jsx';
 import UserProfile from './UserProfile';
+import Routing from './Routing';
+
+
 ReactDOM.render(
-    <SignIn/>, document.getElementById('root'));
+    <Routing/>, document.getElementById('root'));

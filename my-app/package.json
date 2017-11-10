@@ -5,9 +5,12 @@
   "dependencies": {
     "axios": "^0.17.0",
     "jquery": "^1.11.3",
+    "js-md5": "^0.7.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-fontawesome": "^1.6.1"
+    "react-fontawesome": "^1.6.1",
+    "history": "^1.17.0",
+    "react-router": "^4.2.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
