@@ -83,7 +83,7 @@ class RegistrationForm extends Component {
                                 id="firstName"
                                 placeholder="Login"
                                 className="form-control"
-                                autofocus
+                                autoFocus
                                 value={this.state.login}
                                 onChange={this
                                 .changeLogin
@@ -99,7 +99,7 @@ class RegistrationForm extends Component {
                                 id="firstName"
                                 placeholder="Imię"
                                 className="form-control"
-                                autofocus
+                                autoFocus
                                 value={this.state.name}
                                 onChange={this
                                 .changeName
@@ -115,7 +115,7 @@ class RegistrationForm extends Component {
                                 id="firstName"
                                 placeholder="Nazwisko"
                                 className="form-control"
-                                autofocus
+                                autoFocus
                                 value={this.state.surname}
                                 onChange={this
                                 .changeSurname

@@ -6,6 +6,4 @@ import ReactDOM from 'react-dom';
 //import UserProfile from './UserProfile';
 import Routing from './Routing';
 
-
-ReactDOM.render(
-    <Routing/>, document.getElementById('root'));
+ReactDOM.render(<Routing/>, document.getElementById('root'));

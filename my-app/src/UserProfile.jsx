@@ -14,6 +14,11 @@ class UserProfile extends Component {
 
     }
 
+
+    changeValue(){
+    
+    }
+
     render() {
 
         return (
@@ -31,7 +36,7 @@ class UserProfile extends Component {
               </div>
               <div className="panel-body">
                 <div className="row">
-                  <div className="col-md-3 col-lg-3 " align="center"> <img alt="Zdjęcie" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"  className="img-circle img-responsive" /> </div>
+                  <div className="col-md-3 col-lg-3 centered"> <img alt="Zdjęcie" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"  className="img-circle img-responsive" /> </div>
                   {
 
                   }
@@ -41,24 +46,24 @@ class UserProfile extends Component {
                       <tbody>
                         <tr>
                           <td>Imię:</td>
-                          <td><div class="form-group"><input type="text" class="form-group" name="name" value={this.state.name}/></div></td>
+                          <td><div className="form-group"><input type="text" className="form-group" name="name" onChange={this.changeValue.bind(this)} value={this.state.name}/></div></td>
                         </tr>
                         <tr>
                           <td>Nazwisko:</td>
-                          <td><div class="form-group"><input type="text" class="form-group" name="surname" value={this.state.surname}/></div></td>
+                          <td><div className="form-group"><input type="text" className="form-group" name="surname" onChange={this.changeValue.bind(this)} value={this.state.surname}/></div></td>
                         </tr>
                         <tr>
                           <td>Adres email:</td>
-                          <td><div class="form-group"><input type="text" class="form-group" name="email" value={this.state.email}/></div></td>
+                          <td><div className="form-group"><input type="text" className="form-group" name="email" onChange={this.changeValue.bind(this)} value={this.state.email}/></div></td>
                         </tr>
                         <tr>
                         </tr><tr>
                           <td>Hasło:</td>
-                          <td><div class="form-group"><input type="password" class="form-group" name="password" value={this.state.password}/></div></td>
+                          <td><div className="form-group"><input type="password" className="form-group" name="password" onChange={this.changeValue.bind(this)} value={this.state.password}/></div></td>
                         </tr>
                         <tr>
                           <td>Login:</td>
-                          <td><div class="form-group"><input type="text" class="form-group" name="login" value={this.state.login}/></div></td>
+                          <td><div className="form-group"><input type="text" className="form-group" name="login" value={this.state.login} onChange={this.changeValue.bind(this)}/></div></td>
                         </tr>
                        
                         

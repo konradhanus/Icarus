@@ -45,7 +45,7 @@ componentWillMount() {
                                     .map((mojewiadomosci, id_tej_wadomosci) => <Messages
                                         isSenderMe={true}
                                         name={mojewiadomosci.id_guest}
-                                        value={mojewiadomosci.message}/>)
+                                        value={mojewiadomosci.message} key={id_tej_wadomosci}/>)
                                 : null
 }
 
@@ -65,7 +65,7 @@ componentWillMount() {
                                     ? this
                                         .state
                                         .usersList
-                                        .map((user, id) => <UserList user={user}></UserList>)
+                                        .map((user, id) => <UserList user={user} key={id}></UserList>)
                                     : null
 }
                             </div>

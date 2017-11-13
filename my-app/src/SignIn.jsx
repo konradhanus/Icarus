@@ -92,7 +92,7 @@ class SignIn extends Component {
                                 className="form-control"
                                 placeholder="Wpisz adres email"
                                 required
-                                autofocus/>
+                                autoFocus/>
 
                             <label className="password-label" htmlFor="inputPassword">Hasło:</label>
                             <input
