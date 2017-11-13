@@ -18,7 +18,14 @@ class Chat extends Component {
 
 componentWillMount() {
 
-//let Icarus = this;
+    $.get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php",function(data){
+
+let datajson = JSON.parse(data);
+console.log(datajson);
+
+    })
+
+let Icarus = this;
 
         axios
             .get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php")
@@ -78,7 +85,20 @@ componentWillMount() {
     }
 
     componentDidMount() {
-        let Icarus = this;
+       
+       let Icarus = this;
+
+        axios
+            .get("http://arconsulting.nazwa.pl/icarus/checkifloggedin.php")
+            .then(function (response) {
+                    console.log(response.data);
+               // Icarus.setState({usersList: response.data});
+
+            });
+       
+       
+       
+  
 
         axios
             .get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser")
