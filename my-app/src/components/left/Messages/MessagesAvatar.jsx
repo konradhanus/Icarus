@@ -9,7 +9,7 @@ class MessagesAvatar extends Component {
                     className="media-object"
                     style={{
                     width: 80
-                }}/>
+                }} alt=''/>
             </div>
 
         )

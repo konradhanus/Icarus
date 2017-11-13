@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import $ from "jquery";
+//import $ from "jquery";
 import Icarus from './Icarus';
 import axios from 'axios';
 import RegistrationForm from './RegistrationForm';
 import {
-  BrowserRouter as Router,
-  Route,
+  //BrowserRouter as Router,
+  //Route,
   Link
 } from 'react-router-dom'
 
@@ -69,7 +69,7 @@ class SignIn extends Component {
             return (<Icarus/>);
         } else {
 
-            if (this.state.page == 'registrationForm') {
+            if (this.state.page === 'registrationForm') {
 
                    return (
                        <RegistrationForm />

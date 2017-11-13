@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Tabs from './components/left/Tabs.jsx';
 import Messages from './components/left/Messages.jsx';
 import UserList from './components/right/UserList.jsx';
-import $ from "jquery";
+//import $ from "jquery";
 
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ class Chat extends Component {
 
 componentWillMount() {
 
-let Icarus = this;
+//let Icarus = this;
 
         axios
             .get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php")
