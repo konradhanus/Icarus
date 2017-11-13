@@ -15,24 +15,20 @@ class Chat extends Component {
             messageList: ""
         };
     }
-    componentDidMount() {
-        let Icarus = this;
 
-        axios.get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser").then(function (response) {
-         
-            Icarus.setState({usersList: response.data});
-           
-        });
-       
- 
+componentWillMount() {
 
+let Icarus = this;
 
-          axios.get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getMessage").then(function (response) {
-            
-            Icarus.setState({messageList: response.data});
-           
-        });
-    }
+        axios
+            .get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php")
+            .then(function (response) {
+                    console.log(response.data);
+               // Icarus.setState({usersList: response.data});
+
+            });
+
+}
 
     render() {
         return (
@@ -79,6 +75,26 @@ class Chat extends Component {
             </div>
         )
 
+    }
+
+    componentDidMount() {
+        let Icarus = this;
+
+        axios
+            .get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser")
+            .then(function (response) {
+
+                Icarus.setState({usersList: response.data});
+
+            });
+
+        axios
+            .get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getMessage")
+            .then(function (response) {
+
+                Icarus.setState({messageList: response.data});
+
+            });
     }
 }
 
