@@ -19,7 +19,7 @@ class Chat extends Component {
 componentWillMount() {
 
 //let Icarus = this;
-
+  
         axios
             .get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php")
             .then(function (response) {
