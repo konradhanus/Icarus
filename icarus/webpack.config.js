@@ -1,5 +1,5 @@
 var config = {
-    entry: './src/index.js',
+    entry: './entry.js',
     output: {
         path: __dirname,
         filename: 'output.js'
