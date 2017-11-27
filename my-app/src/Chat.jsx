@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Tabs from './components/left/Tabs.jsx';
 import Messages from './components/left/Messages.jsx';
 import UserList from './components/right/UserList.jsx';
-//import $ from "jquery";
+import $ from "jquery";
 
 import axios from 'axios';
 
@@ -17,6 +17,13 @@ class Chat extends Component {
     }
 
 componentWillMount() {
+
+    $.get("http://arconsulting.nazwa.pl/icarus/ws_chk_if_logged_in.php",function(data){
+
+let datajson = JSON.parse(data);
+console.log(datajson);
+
+    })
 
 //let Icarus = this;
   
@@ -78,7 +85,20 @@ componentWillMount() {
     }
 
     componentDidMount() {
-        let Icarus = this;
+       
+       let Icarus = this;
+
+        axios
+            .get("http://arconsulting.nazwa.pl/icarus/checkifloggedin.php")
+            .then(function (response) {
+                    console.log(response.data);
+               // Icarus.setState({usersList: response.data});
+
+            });
+       
+       
+       
+  
 
         axios
             .get("http://arconsulting.nazwa.pl/icarus/webservice.php?method=getUser")
